@@ -55,6 +55,9 @@ def generate_page(from_path, template_path, dest_path, base_path):
     final_html = template_content.replace("{{ Title }}", title)
     final_html = final_html.replace("{{ Content }}", html_content)
 
+    if base_path != "/" and base_path.endswith("/"):
+        base_path = base_path[:-1]
+
     final_html = final_html.replace('href="/', f'href="{base_path}/')
     final_html = final_html.replace('src="/', f'src="{base_path}/')
 
